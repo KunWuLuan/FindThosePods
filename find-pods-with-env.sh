@@ -1,4 +1,16 @@
 #!/bin/bash
+
+if [[ $# -eq 0 ]] ; then 
+    echo "This shell helps to find the pods in cluster by exec env cmd."
+    echo "If the output contains the key you passed, the shell show it."
+    echo "Args:"
+    echo '$1: key of env'
+    echo 'Output:'
+    echo 'values of env, pod name, pod namespace.'
+    echo ':) Happy every day, OK?'
+    exit
+fi
+
 env_key=$1
 
 for ns in $(kubectl get ns | sed '1d'| awk '{print $1}')
